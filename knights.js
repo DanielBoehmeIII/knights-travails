@@ -17,10 +17,6 @@ function knightMoves(start, end) {
     return x >= 0 && x < 8 && y >= 0 && y < 8;
   }
 
-  function posToString([x, y]) {
-    return `${x}, ${y}`;
-  }
-
   const queue = [[start, [start]]];
   const visited = new Set([start.toString()]);
 
@@ -28,7 +24,11 @@ function knightMoves(start, end) {
     const [current, path] = queue.shift();
 
     if (current[0] === end[0] && current[1] === end[1]) {
-      return path;
+      console.log(`You made it in ${path.length - 1} moves! Here's your path:`);
+      for (const pos of path) {
+        console.log(pos);
+      }
+      return path; // or return path.length - 1 if only move count is needed
     }
 
     for (const [dx, dy] of moves) {
@@ -41,7 +41,8 @@ function knightMoves(start, end) {
     }
   }
 
-  return { moveCount: -1, path: [] };
+  console.log("No path found.");
+  return [];
 }
 
-console.log(knightMoves([0, 0], [1, 2]));
+knightMoves([3, 3], [4, 3]);
