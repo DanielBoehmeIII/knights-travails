@@ -1,1 +1,1 @@
-# knights-travails
+# binary-search-tree-exercises
